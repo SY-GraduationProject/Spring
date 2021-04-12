@@ -45,7 +45,6 @@ public class MemoApiControllerTest {
         String content = "content";
         MemoSaveRequestDto requestDto = MemoSaveRequestDto.builder()
                 .content(content)
-                .author("author")
                 .build();
 
         String url = "http://localhost:" + port + "/api/memo";
@@ -66,7 +65,6 @@ public class MemoApiControllerTest {
         //given
         Memo savedMemo = memoRepository.save(Memo.builder()
         .content("content")
-        .author("author")
         .build());
 
         Long updateId = savedMemo.getId();

@@ -32,7 +32,6 @@ public class MemoRepositoryTest {
 
         memoRepository.save(Memo.builder() // id값(기본키)이 있다면 update, 없다면 insert 쿼리가 실행된다.
         .content(content)
-        .author("soosungp33@gmail.com")
         .build());
 
         // when
@@ -41,24 +40,5 @@ public class MemoRepositoryTest {
         // then
         Memo memo = memoList.get(0); // 1개만 넣었으므로 첫 번째만 가져옴
         assertThat(memo.getContent()).isEqualTo(content);
-    }
-
-    @Test
-    public void BaseTimeEntity_등록() {
-        //given
-        LocalDateTime now = LocalDateTime.of(2019, 6, 4, 0, 0, 0);
-        memoRepository.save(Memo.builder()
-        .content("content")
-        .author("author")
-        .build());
-
-        //when
-        List<Memo> memoList = memoRepository.findAll();
-
-        //then
-        Memo memo = memoList.get(0);
-
-        assertThat(memo.getCreatedDate()).isAfter(now);
-        assertThat(memo.getModifiedDate()).isAfter(now);
     }
 }

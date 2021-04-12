@@ -36,8 +36,8 @@ public class MemoService {
     }
 
     @Transactional(readOnly = true)
-    public List<MemoListResponseDto> findAllDesc() {
-        return memoRepository.findAllDesc().stream()
+    public List<MemoListResponseDto> findAll() {
+        return memoRepository.findAll().stream()
                 .map(MemoListResponseDto::new)
                 .collect(Collectors.toList());
     }

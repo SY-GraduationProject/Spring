@@ -15,7 +15,7 @@ public class IndexController {
 
     @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute("memo", memoService.findAllDesc());
+        model.addAttribute("memo", memoService.findAll());
         return "index"; // index 페이지로
     }
 
