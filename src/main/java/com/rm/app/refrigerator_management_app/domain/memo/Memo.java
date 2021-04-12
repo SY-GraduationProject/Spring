@@ -17,15 +17,17 @@ public class Memo{
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
 
-    //@Column(columnDefinition = "boolean default true")
-    //private Boolean check = true;
+    @Column(columnDefinition = "boolean default true")
+    private Boolean complete = true;
 
     @Builder // 생성자에 포함된 필드만 빌더에 포함(생성자와 같은 기능) -> 생성자를 통해 최종값을 채우고 DB에 삽입
-    public Memo(String content) {
+    public Memo(String content, boolean complete) {
         this.content = content;
+        this.complete = complete;
     }
 
-    public void update(String content) {
+    public void update(String content, boolean complete) {
         this.content = content;
+        this.complete = complete;
     }
 }

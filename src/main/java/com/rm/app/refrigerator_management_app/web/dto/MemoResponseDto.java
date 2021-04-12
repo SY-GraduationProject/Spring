@@ -7,9 +7,11 @@ import lombok.Getter;
 public class MemoResponseDto {
     private Long id;
     private String content;
+    private boolean complete;
 
     public MemoResponseDto(Memo entity) {
         this.id = entity.getId();
         this.content = entity.getContent();
+        this.complete = entity.getComplete();
     }
 }

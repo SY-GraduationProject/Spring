@@ -27,7 +27,7 @@ public class MemoService {
     public Long update(Long id, MemoUpdateRequestDto requestDto) {
         Memo memo = memoRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id="+ id));
 
-        memo.update(requestDto.getContent()); // memoRepository.update 같은 건 없기 때문에 Memo에다 update하는 함수를 작성해서 사용
+        memo.update(requestDto.getContent(), requestDto.isComplete()); // memoRepository.update 같은 건 없기 때문에 Memo에다 update하는 함수를 작성해서 사용
         // 트랜잭션 안에서 데이터베이스에서 데이터를 가져오면 영속성 컨텍스트가 유지된 상태이다.
         // 이때 해당 데이터 값을 변경하면 트랙잭션이 끝나는 시점에 변경된 내용을 반영한다.
         // 따라서 update쿼리를 날릴 필요가 없다.

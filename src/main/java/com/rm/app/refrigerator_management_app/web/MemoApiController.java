@@ -1,7 +1,5 @@
 package com.rm.app.refrigerator_management_app.web;
 
-import com.rm.app.refrigerator_management_app.domain.memo.Memo;
-import com.rm.app.refrigerator_management_app.domain.memo.MemoRepository;
 import com.rm.app.refrigerator_management_app.service.memo.MemoService;
 import com.rm.app.refrigerator_management_app.web.dto.MemoListResponseDto;
 import com.rm.app.refrigerator_management_app.web.dto.MemoResponseDto;
@@ -29,6 +27,7 @@ public class MemoApiController {
     public Memo testdb() {
         final Memo memo = Memo.builder()
                 .content("test")
+                .complete(true)
                 .build();
         return memoRepository.save(memo);
     }*/

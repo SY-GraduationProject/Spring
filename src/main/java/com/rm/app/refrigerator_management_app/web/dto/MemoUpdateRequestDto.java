@@ -8,9 +8,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class MemoUpdateRequestDto {
     private String content;
+    private boolean complete;
 
     @Builder
-    public MemoUpdateRequestDto(String content) { // 테스트할 때 쓰는 듯?
+    public MemoUpdateRequestDto(String content, boolean complete) { // 테스트할 때 쓰는 듯?
         this.content = content;
+        this.complete = complete;
     }
 }
