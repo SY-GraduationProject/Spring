@@ -9,18 +9,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class MemoSaveRequestDto {
     private String content;
-    private String author;
 
     @Builder
-    public MemoSaveRequestDto(String content, String author) { // 테스트할 때 쓰는 듯?
+    public MemoSaveRequestDto(String content) { // 테스트할 때 쓰는 듯?
         this.content = content;
-        this.author = author;
     }
 
     public Memo toEntity() {
         return Memo.builder()
                 .content(content)
-                .author(author)
                 .build();
     }
 }

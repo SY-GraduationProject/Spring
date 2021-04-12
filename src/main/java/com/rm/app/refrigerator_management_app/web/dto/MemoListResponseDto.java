@@ -9,13 +9,9 @@ import java.time.LocalDateTime;
 public class MemoListResponseDto {
     private Long id;
     private String content;
-    private String author;
-    private LocalDateTime modifiedDate;
 
     public MemoListResponseDto(Memo entity) {
         this.id = entity.getId();
         this.content = entity.getContent();
-        this.author = entity.getAuthor();
-        this.modifiedDate = entity.getModifiedDate();
     }
 }
