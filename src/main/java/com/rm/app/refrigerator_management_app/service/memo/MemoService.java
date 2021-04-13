@@ -23,7 +23,7 @@ public class MemoService {
         return memoRepository.save(requestDto.toEntity()).getId();
     }
 
-    @Transactional // db에 접근해서 바꿔야할 때 사
+    @Transactional
     public Long update(Long id, MemoUpdateRequestDto requestDto) {
         Memo memo = memoRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id="+ id));
 
@@ -33,6 +33,13 @@ public class MemoService {
         // 따라서 update쿼리를 날릴 필요가 없다.
 
         return id;
+    }
+
+    @Transactional
+    public void delete(Long id) {
+        Memo memo = memoRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id=" + id));
+
+        memoRepository.delete(memo);
     }
 
     @Transactional(readOnly = true)
