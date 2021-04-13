@@ -34,17 +34,14 @@ public class MemoApiControllerTest {
     @Autowired
     private MemoRepository memoRepository;
 
-    @AfterEach
-    public void tearDown() throws Exception {
-        memoRepository.deleteAll();
-    }
-
     @Test
     public void Memo_등록() throws Exception {
         //given
         String content = "content";
+        boolean complete = true;
         MemoSaveRequestDto requestDto = MemoSaveRequestDto.builder()
                 .content(content)
+                .complete(complete)
                 .build();
 
         String url = "http://localhost:" + port + "/api/memo";
@@ -57,21 +54,31 @@ public class MemoApiControllerTest {
         assertThat(responseEntity.getBody()).isGreaterThan(0L);
 
         List<Memo> all = memoRepository.findAll();
-        assertThat(all.get(0).getContent()).isEqualTo(content);
+        int size = all.size();
+        Memo memo = all.get(size-1); // 마지막 튜플을 가져옴
+        assertThat(memo.getContent()).isEqualTo(content);
+        assertThat(memo.getComplete()).isEqualTo(complete);
+
+        // 삭제
+        memoRepository.delete(memo);
+
     }
 
     @Test
     public void Memo_수정() throws Exception {
         //given
         Memo savedMemo = memoRepository.save(Memo.builder()
-        .content("content")
-        .build());
+                .content("content")
+                .complete(true)
+                .build());
 
         Long updateId = savedMemo.getId();
         String updateContent = "content2";
+        boolean updateComplete = false;
 
         MemoUpdateRequestDto requestDto = MemoUpdateRequestDto.builder()
                 .content(updateContent)
+                .complete(updateComplete)
                 .build();
 
         String url = "http://localhost:" + port + "/api/memo/"+ updateId;
@@ -86,6 +93,12 @@ public class MemoApiControllerTest {
         assertThat(responseEntity.getBody()).isGreaterThan(0L);
 
         List<Memo> all = memoRepository.findAll();
-        assertThat(all.get(0).getContent()).isEqualTo(updateContent);
+        int size = all.size();
+        Memo memo = all.get(size-1); // 마지막 튜플을 가져옴
+        assertThat(memo.getContent()).isEqualTo(updateContent);
+        assertThat(memo.getComplete()).isEqualTo(updateComplete);
+
+        // 삭제
+        memoRepository.delete(memo);
     }
 }

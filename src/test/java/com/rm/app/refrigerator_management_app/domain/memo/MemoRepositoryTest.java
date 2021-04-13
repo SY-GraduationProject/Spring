@@ -20,25 +20,26 @@ public class MemoRepositoryTest {
     @Autowired
     MemoRepository memoRepository;
 
-    @AfterEach
-    public void cleanup() {
-        memoRepository.deleteAll();
-    }
-
     @Test
     public void 메모_불러오기() {
         // given
         String content = "테스트 메모";
-
+        boolean complete = true;
         memoRepository.save(Memo.builder() // id값(기본키)이 있다면 update, 없다면 insert 쿼리가 실행된다.
         .content(content)
+        .complete(complete)
         .build());
 
         // when
         List<Memo> memoList = memoRepository.findAll(); // 테이블에 있는 모든 데이터를 조회
+        int size = memoList.size();
 
         // then
-        Memo memo = memoList.get(0); // 1개만 넣었으므로 첫 번째만 가져옴
+        Memo memo = memoList.get(size-1); // 마지막 튜플을 가져옴
         assertThat(memo.getContent()).isEqualTo(content);
+        assertThat(memo.getComplete()).isEqualTo(complete);
+
+        // 삭제
+        memoRepository.delete(memo);
     }
 }

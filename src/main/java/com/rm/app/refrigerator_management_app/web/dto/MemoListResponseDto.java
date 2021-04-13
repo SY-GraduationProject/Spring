@@ -9,9 +9,11 @@ import java.time.LocalDateTime;
 public class MemoListResponseDto {
     private Long id;
     private String content;
+    private boolean complete;
 
     public MemoListResponseDto(Memo entity) {
         this.id = entity.getId();
         this.content = entity.getContent();
+        this.complete = entity.getComplete();
     }
 }
