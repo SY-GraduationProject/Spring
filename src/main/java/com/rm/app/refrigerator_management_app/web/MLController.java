@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MLController {
     @RequestMapping(value = "/ml")
-    public String ml_test() {
+    public String ml() {
         return "ml";
     }
 }
