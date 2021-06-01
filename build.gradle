@@ -35,6 +35,9 @@ dependencies {
 
 	implementation('org.springframework.boot:spring-boot-starter-thymeleaf')
 	implementation('nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect')
+
+	// json 파서
+	compile 'com.googlecode.json-simple:json-simple:1.1.1'
 }
 
 test {
