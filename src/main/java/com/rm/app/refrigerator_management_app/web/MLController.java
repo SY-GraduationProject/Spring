@@ -35,7 +35,7 @@ public class MLController {
     }
 
     @GetMapping(value = "/ml")
-    public ResponseEntity<String> ml() throws ParseException {
+    public List<MaterialListResponseDto> ml() throws ParseException {
         // to Flask
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
 
@@ -92,6 +92,6 @@ public class MLController {
 
         materialService.save(requestDto);
 
-        return response;
+        return materialService.findAll();
     }
 }

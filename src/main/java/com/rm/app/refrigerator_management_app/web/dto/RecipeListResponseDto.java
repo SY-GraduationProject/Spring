@@ -7,15 +7,17 @@ import lombok.Getter;
 public class RecipeListResponseDto {
     private Long id;
     private String name;
-    private String food1;
-    private String food2;
-    private String valid;
+    private String food;
+    private String material;
+    private String seq;
+    private String link;
 
     public RecipeListResponseDto(Recipe entity) {
         this.id = entity.getId();
         this.name = entity.getName();
-        this.food1 = entity.getFood1();
-        this.food2 = entity.getFood2();
-        this.valid = entity.getValid();
+        this.food = entity.getFood();
+        this.material = entity.getMaterial();
+        this.seq = entity.getSeq();
+        this.link = entity.getLink();
     }
 }
