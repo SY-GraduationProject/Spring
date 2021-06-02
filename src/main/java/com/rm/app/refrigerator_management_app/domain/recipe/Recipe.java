@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Getter // get메소드를 자동으로 생성
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity(name="MEMO") // JPA 어노테이션(테이블과 링크될 클래스를 나타낸다.)
+@Entity(name="RECIPE") // JPA 어노테이션(테이블과 링크될 클래스를 나타낸다.)
 public class Recipe{
 
     @Id // PK
