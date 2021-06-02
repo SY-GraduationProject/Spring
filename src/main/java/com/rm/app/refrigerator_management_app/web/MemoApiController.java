@@ -30,8 +30,6 @@ public class MemoApiController {
         return memoRepository.save(memo);
     }
 
-
-
     @GetMapping("/api/memo") // 조회
     public List<MemoListResponseDto> findAllMemo() {
         return memoService.findAll();
