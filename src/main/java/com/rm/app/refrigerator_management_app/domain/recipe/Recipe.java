@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Getter // get메소드를 자동으로 생성
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity(name="Recipe") // JPA 어노테이션(테이블과 링크될 클래스를 나타낸다.)
+@Entity(name="RECIPE") // JPA 어노테이션(테이블과 링크될 클래스를 나타낸다.)
 public class Recipe{
 
     @Id // PK
@@ -18,20 +18,24 @@ public class Recipe{
     private String name;
 
     @Column(columnDefinition = "TEXT", nullable = false)
-    private String food1;
+    private String food;
 
     @Column(columnDefinition = "TEXT", nullable = false)
-    private String food2;
+    private String material;
 
     @Column(columnDefinition = "TEXT", nullable = false)
-    private String valid;
+    private String seq;
+
+    @Column(columnDefinition = "TEXT", nullable = false)
+    private String link;
 
     @Builder // 생성자에 포함된 필드만 빌더에 포함(생성자와 같은 기능) -> 생성자를 통해 최종값을 채우고 DB에 삽입
-    public Recipe(String name, String food1, String food2, String valid) {
+    public Recipe(String name, String food, String material, String seq, String link) {
         this.name = name;
-        this.food1 = food1;
-        this.food2 = food2;
-        this.valid = valid;
+        this.food = food;
+        this.material = material;
+        this.seq = seq;
+        this.link = link;
     }
 
 }
