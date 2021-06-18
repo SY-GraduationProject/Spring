@@ -58,7 +58,7 @@ public class MLController {
         JSONArray ob = (JSONArray) info.parse(response.getBody());
         int size = ob.size();
         int i=0;
-        while(true) {
+        while(true && size!=0) {
             switch(ob.get(i).toString()) {
                 case "egg" :
                     egg = true;
